@@ -5,9 +5,10 @@ import react from '@vitejs/plugin-react';
 export default defineConfig({
   plugins: [react()],
   server: {
-    port: 3000, // Optional: Custom development server port
+    port: 3000, // Development server port (local only)
   },
   build: {
-    outDir: 'dist', // Where the production files will be generated
+    outDir: 'dist', // Output folder for production files
+    emptyOutDir: true, // Clears old files before build
   },
 });

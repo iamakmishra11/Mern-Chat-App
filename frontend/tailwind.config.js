@@ -7,15 +7,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: '#6366F1', // Blue
-        secondary: '#7F1D1D', // Red
-        accent: '#FBBF24', // Yellow
-        neutral: '#F3F4F6', // Light Gray
-        dark: '#1F2937', // Dark Gray
-        background: '#111827', // Dark Black
-        text: '#E5E7EB', // Light Text
-        success: '#10B981', // Green
-        error: '#EF4444', // Red
+        primary: '#6366F1',
+        secondary: '#7F1D1D',
+        accent: '#FBBF24',
+        neutral: '#F3F4F6',
+        dark: '#1F2937',
+        background: '#111827',
+        text: '#E5E7EB',
+        success: '#10B981',
+        error: '#EF4444',
       },
     },
   },

@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const instance = axios.create({
-  baseURL: 'http://localhost:3000', // adjust this if your backend URL is different
+  baseURL: 'https://mern-chat-ai-app.onrender.com', // Update this to your Render URL
 });
 
 // Add a request interceptor to attach the token

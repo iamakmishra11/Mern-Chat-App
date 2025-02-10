@@ -6,7 +6,7 @@ let socketInstance = null;
 
 export const initializeSocket = (projectId) => {
 
-    const socketInstance = socket('https://mern-chat-ai-app.onrender.com', {
+    socketInstance = socket(import.meta.env.VITE_API_URL, {
         auth: {
             token: localStorage.getItem('token')
         },

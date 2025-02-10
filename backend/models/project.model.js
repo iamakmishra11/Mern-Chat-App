@@ -6,14 +6,13 @@ const projectSchema = new mongoose.Schema({
         type: String,
         lowercase: true,
         required: true,
-        trim: true, 
+        trim: true,
         unique: [ true, 'Project name must be unique' ],
     },
 
     users: [
         {
-            type: mongoose.Schema.Types.ObjectId, //This specifies that the users field is an array of ObjectIds. 
-            // ObjectIds are unique identifiers used by MongoDB.
+            type: mongoose.Schema.Types.ObjectId,
             ref: 'user'
         }
     ],

@@ -4,7 +4,7 @@ import { validationResult } from 'express-validator';
 import redisClient from '../services/redis.service.js';
 
 
-export const createUserController = async (req, res) => { // for validating user we created this user cantroller
+export const createUserController = async (req, res) => {
 
     const errors = validationResult(req);
 
@@ -12,15 +12,15 @@ export const createUserController = async (req, res) => { // for validating user
         return res.status(400).json({ errors: errors.array() });
     }
     try {
-        const user = await userService.createUser(req.body); //creating user by acquiring from userService Component
+        const user = await userService.createUser(req.body);
 
-        const token = await user.generateJWT(); // creating token and took from user.model
+        const token = await user.generateJWT();
 
         delete user._doc.password;
 
         res.status(201).json({ user, token });
     } catch (error) {
-        res.status(400).send(error.message); 
+        res.status(400).send(error.message);
     }
 }
 
@@ -33,7 +33,7 @@ export const loginController = async (req, res) => {
 
     try {
 
-        const { email, password } = req.body; //check that is any user exist with this email and password
+        const { email, password } = req.body;
 
         const user = await userModel.findOne({ email }).select('+password');
 
@@ -43,7 +43,7 @@ export const loginController = async (req, res) => {
             })
         }
 
-        const isMatch = await user.isValidPassword(password); //we give compare password to isValidPassword in user.model.js
+        const isMatch = await user.isValidPassword(password);
 
         if (!isMatch) {
             return res.status(401).json({
@@ -79,8 +79,7 @@ export const logoutController = async (req, res) => {
 
         const token = req.cookies.token || req.headers.authorization.split(' ')[ 1 ];
 
-        redisClient.set(token, 'logout', 'EX', 60 * 60 * 24);// providing redis token and giving  a command to logout 
-        // and expiry should be EX 24 hrs
+        redisClient.set(token, 'logout', 'EX', 60 * 60 * 24);
 
         res.status(200).json({
             message: 'Logged out successfully'

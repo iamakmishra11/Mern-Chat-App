@@ -12,7 +12,7 @@ export const createProject = async ({
     }
 
     let project;
-    try {   
+    try {
         project = await projectModel.create({
             name,
             users: [ userId ]

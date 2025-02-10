@@ -38,4 +38,4 @@ const UserAuth = ({ children }) => {
     )
 }
 
-export default UserAuth;
+export default UserAuth

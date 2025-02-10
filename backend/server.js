@@ -7,7 +7,7 @@ import mongoose from 'mongoose';
 import projectModel from './models/project.model.js';
 import { generateResult } from './services/ai.service.js';
 
-const port = process.env.PORT || 3002;
+const port = process.env.PORT || 3000;
 
 
 
@@ -22,6 +22,7 @@ const io = new Server(server, {
 io.use(async (socket, next) => {
 
     try {
+
         const token = socket.handshake.auth?.token || socket.handshake.headers.authorization?.split(' ')[ 1 ];
         const projectId = socket.handshake.query.projectId;
 

@@ -1,14 +1,20 @@
-import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite'
+import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
+// https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [ react() ],
   server: {
-    port: 3000, // Development server port (local only)
-  },
-  build: {
-    outDir: 'dist', // Output folder for production files
-    emptyOutDir: true, // Clears old files before build
-  },
-});
+    headers: {
+      "Cross-Origin-Embedder-Policy": "require-corp",
+      "Cross-Origin-Opener-Policy": "same-origin"
+    },
+    proxy: {
+      '/cdn': {
+        target: 'https://unpkg.com',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/cdn/, '')
+      }
+    }
+  }
+})
